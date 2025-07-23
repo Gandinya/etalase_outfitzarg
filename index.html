@@ -17,6 +17,8 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
 
+  <input type="text" id="searchInput" placeholder="Cari Sesuai Di Caption" class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-400"/>
+  
   <div class="max-w-7xl mx-auto">
     <h1 class="text-3xl font-bold mb-8 text-center">LINK ETALASE OUTFITZARG</h1>
 
@@ -62,9 +64,9 @@
         </div>
       </a>
 
-      <a href="https://via.placeholder.com/300x200?text=No+Image" target="_blank" class="block group overflow-hidden rounded-xl shadow-lg bg-white">
+      <a href="" target="_blank" class="block group overflow-hidden rounded-xl shadow-lg bg-white">
         <video class="w-full h-auto rounded-xl shadow-lg" autoplay muted loop playsinline>
-          <source src="/video/Workshirt Boxy.mp4" type="video/mp4" />Browser Jelek Ganti Ke Yang Lain
+          <source src="https://via.placeholder.com/300x200?text=No+Image" type="video/mp4" />Browser Jelek Ganti Ke Yang Lain
         </video>
         <div class="p-3 text-center">
           <p class="font-medium text-gray-700">-</p>
@@ -77,6 +79,20 @@
       
     </div>
   </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const productItems = document.querySelectorAll('.product');
+
+    searchInput.addEventListener('input', () => {
+      const keyword = searchInput.value.toLowerCase();
+
+      productItems.forEach((item) => {
+        const name = item.dataset.name.toLowerCase();
+        item.style.display = name.includes(keyword) ? 'block' : 'none';
+      });
+    });
+  </script>
 
 </body>
 </html>
