@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etalase OutfitZarg</title>
+  <link rel="icon" href="/logo/OutfitZarg.png" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Font Bebas Neue -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome untuk ikon harga -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+  
+  <h1 class="text-center text-2xl font-bold mb-6">Etalase Produk OutfitZarg</h1>
+
+  <form id="produk-form" class="max-w-md mx-auto bg-white p-4 rounded-xl shadow mb-6 space-y-4">
+    <input name="nama" type="text" placeholder="Nama Produk" class="w-full p-2 border rounded" required>
+    <input name="harga" type="number" placeholder="Harga (contoh: 155900)" class="w-full p-2 border rounded" required>
+    <input name="video" type="text" placeholder="Nama File Video (contoh: video1.mp4)" class="w-full p-2 border rounded" required>
+    <button class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700">Simpan Produk</button>
+  </form>
+  
+</body>
+</html>
