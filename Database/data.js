@@ -19,6 +19,17 @@ let produkList = [
   }
 ]
 
+function loadProdukList() {
+  const data = localStorage.getItem(STORAGE_KEY)
+  return data ? JSON.parse(data) : []
+}
+
+function saveProdukList(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+}
+
+let produkList = loadProdukList()
+
 function getProduk() {
   return produkList.filter(p => !p.dihapus)
 }
@@ -30,22 +41,36 @@ function getSampah() {
 function tambahProduk(produk) {
   produk.dihapus = false
   produkList.push(produk)
+  saveProdukList(produkList)
 }
 
 function updateProduk(index, produkBaru) {
   produkBaru.dihapus = produkList[index].dihapus
   produkList[index] = produkBaru
+  saveProdukList(produkList)
 }
 
 function hapusProduk(index) {
   produkList[index].dihapus = true
+  saveProdukList(produkList)
 }
 
-function pulihkanProduk(index) {
-  getSampah()[index].dihapus = false
+function pulihkanProduk(indexSampah) {
+  const sampah = getSampah()
+  const produk = sampah[indexSampah]
+  const indexAsli = produkList.findIndex(p => p === produk)
+  if (indexAsli !== -1) {
+    produkList[indexAsli].dihapus = false
+    saveProdukList(produkList)
+  }
 }
 
-function hapusPermanent(index) {
-  const indexAsli = produkList.findIndex((p, i) => p.dihapus && i === index)
-  if (indexAsli !== -1) produkList.splice(indexAsli, 1)
+function hapusPermanent(indexSampah) {
+  const sampah = getSampah()
+  const produk = sampah[indexSampah]
+  const indexAsli = produkList.findIndex(p => p === produk)
+  if (indexAsli !== -1) {
+    produkList.splice(indexAsli, 1)
+    saveProdukList(produkList)
+  }
 }
