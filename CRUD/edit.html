@@ -1,4 +1,4 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -6,37 +6,51 @@ a<!DOCTYPE html>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #fad0c4, #ff9a9e);
+       background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
       background-size: 400% 400%;
-      animation: gradient 10s ease infinite;
+      animation: gradientBG 15s ease infinite;
     }
-    @keyframes gradient {
-      0% { background-position: 0% 50% }
-      50% { background-position: 100% 50% }
-      100% { background-position: 0% 50% }
+
+    @keyframes gradientBG {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center">
-  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Edit Produk</h1>
-    <form id="produk-form" class="space-y-4">
+  <div class="w-full max-w-xl bg-white/80 backdrop-blur-md shadow-2xl rounded-2xl p-10 fade-in">
+    <h1 class="text-3xl font-extrabold mb-8 text-center text-purple-700 drop-shadow">Edit Produk</h1>
+    <form id="produk-form" class="space-y-6">
       <div>
-        <label class="block text-sm font-semibold mb-1 text-gray-700">Nama Produk</label>
-        <input type="text" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 outline-none">
+        <label class="block text-sm font-bold mb-1 text-gray-700">Nama Produk</label>
+        <input type="text" name="nama" required
+          class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-400 transition duration-300" />
       </div>
       <div>
-        <label class="block text-sm font-semibold mb-1 text-gray-700">Harga</label>
-        <input type="number" name="harga" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 outline-none">
+        <label class="block text-sm font-bold mb-1 text-gray-700">Harga</label>
+        <input type="number" name="harga" required
+          class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-400 transition duration-300" />
       </div>
       <div>
-        <label class="block text-sm font-semibold mb-1 text-gray-700">Nama File Video</label>
-        <input type="text" name="video" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 outline-none">
+        <label class="block text-sm font-bold mb-1 text-gray-700">Nama File Video</label>
+        <input type="text" name="video" required
+          class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-400 transition duration-300" />
       </div>
-      <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-200">Update Produk</button>
+      <button type="submit"
+        class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-xl shadow-md transition duration-300 transform hover:scale-105">Update Produk</button>
     </form>
-    <div class="mt-4 text-center">
-      <a href="https://etalase-outfitzarg.vercel.app/azekapuire.html" class="text-purple-600 hover:underline">← Kembali ke Daftar Produk</a>
+    <div class="mt-6 text-center">
+      <a href="https://etalase-outfitzarg.vercel.app/azekapuire.html"
+        class="text-purple-700 font-medium hover:underline hover:text-purple-900 transition">← Kembali ke Daftar Produk</a>
     </div>
   </div>
 
