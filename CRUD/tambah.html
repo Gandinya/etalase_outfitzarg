@@ -17,34 +17,41 @@
     h1, h2, h3 {
       font-family: 'Bebas Neue', sans-serif;
     }
+     body {
+      background: linear-gradient(-45deg, #ffecd2, #fcb69f, #ff9a9e, #fad0c4);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+    }
   </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  
- <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-6 text-center text-blue-600">Tambah Produk</h1>
-    
-    <form onsubmit="tambahProduk(event)" class="space-y-4">
+<body class="min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Tambah Produk</h1>
+    <form id="produk-form" class="space-y-4">
       <div>
-        <label class="block text-sm font-medium text-gray-700">Nama Produk</label>
-        <input type="text" id="nama" required class="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+        <label class="block text-sm font-semibold mb-1 text-gray-700">Nama Produk</label>
+        <input type="text" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
       </div>
-
       <div>
-        <label class="block text-sm font-medium text-gray-700">Harga</label>
-        <input type="number" id="harga" required class="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+        <label class="block text-sm font-semibold mb-1 text-gray-700">Harga</label>
+        <input type="number" name="harga" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
       </div>
-
-      <div class="flex justify-between items-center">
-        <a href="https://etalase-outfitzarg.vercel.app" class="text-blue-500 hover:underline">← Kembali</a>
-        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
-          Simpan
-        </button>
+      <div>
+        <label class="block text-sm font-semibold mb-1 text-gray-700">Nama File Video</label>
+        <input type="text" name="video" placeholder="contoh: produk1.mp4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
       </div>
+      <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition duration-200">Simpan Produk</button>
     </form>
+    <div class="mt-4 text-center">
+      <a href="https://etalase-outfitzarg.vercel.app" class="text-pink-600 hover:underline">← Kembali ke Daftar Produk</a>
+    </div>
   </div>
 
-  <script src="crud.js"></script>
-  
+  <script src="app.js"></script>
 </body>
 </html>
