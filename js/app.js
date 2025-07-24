@@ -1,9 +1,16 @@
 const container = document.getElementById("produk-container")
+
 if (container) renderProduk()
 
 function renderProduk() {
   container.innerHTML = ""
-  getProduk().forEach((item, i) => {
+  const data = getProduk()
+  if (data.length === 0) {
+    container.innerHTML = `<p class="text-gray-500">Belum ada produk.</p>`
+    return
+  }
+
+  data.forEach((item, i) => {
     const card = document.createElement("div")
     card.className = "bg-white rounded shadow p-4"
     card.innerHTML = `
@@ -23,7 +30,7 @@ function renderProduk() {
 }
 
 function hapusProdukHandler(index) {
-  if (confirm("Yakin ingin menghapus produk ini?")) {
+  if (confirm("Yakin ingin menghapus produk ini ke Trash?")) {
     hapusProduk(index)
     renderProduk()
   }
