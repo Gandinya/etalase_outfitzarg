@@ -1,0 +1,53 @@
+<!-- trash.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sampah Produk</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6 bg-gray-100">
+  <h1 class="text-3xl font-bold mb-4">Produk Terhapus</h1>
+  <a href="Dashboard.html" class="text-blue-600 underline">← Kembali ke Dashboard</a>
+
+  <div id="sampah-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-4"></div>
+
+  <script src="/Database/data.js"></script>
+  <script>
+    const container = document.getElementById("sampah-container")
+    const sampah = getSampah()
+
+    sampah.forEach((item, i) => {
+      const card = document.createElement("div")
+      card.className = "bg-white rounded-lg shadow p-4 w-64"
+
+      card.innerHTML = `
+        <video controls class="mb-2 rounded-md">
+          <source src="video/${item.video}" type="video/mp4">
+          Browser tidak mendukung video.
+        </video>
+        <h3 class="font-bold text-lg">${item.nama}</h3>
+        <p class="text-red-500 font-semibold">Rp${item.harga.toLocaleString()}</p>
+        <div class="mt-2 space-x-2">
+          <button onclick="pulihkan(${i})" class="bg-green-500 text-white px-2 py-1 rounded">Pulihkan</button>
+          <button onclick="hapusPermanent(${i})" class="bg-red-700 text-white px-2 py-1 rounded">Hapus Permanen</button>
+        </div>
+      `
+      container.appendChild(card)
+    })
+
+    function pulihkan(index) {
+      pulihkanProduk(index)
+      alert("Produk dipulihkan.")
+      location.reload()
+    }
+
+    function hapusPermanent(index) {
+      if (confirm("Hapus permanen produk ini?")) {
+        hapusPermanent(index)
+        location.reload()
+      }
+    }
+  </script>
+</body>
+</html>
