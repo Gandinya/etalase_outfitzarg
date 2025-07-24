@@ -1,38 +1,28 @@
-// data.js
+let produkList = [
+  {
+    nama: "Celana Baggy Pria",
+    harga: 155900,
+    video: "Celana Baggy Pria.mp4"
+  },
+  {
+    nama: "Kemeja Fit Body Wanita",
+    harga: 68400,
+    video: "KemejaCeweFitBody.mp4"
+  }
+]
 
-const STORAGE_KEY = "produkList";
-
-// Ambil produk dari localStorage
 function getProduk() {
-  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  return produkList
 }
 
-// Simpan produk ke localStorage
-function simpanProduk(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+function tambahProduk(produk) {
+  produkList.push(produk)
 }
 
-// Tambah produk baru
-function tambahProduk(item) {
-  const produk = getProduk();
-  produk.push(item);
-  simpanProduk(produk);
+function updateProduk(index, produkBaru) {
+  produkList[index] = produkBaru
 }
 
-// Update/edit produk di index tertentu
-function updateProduk(index, itemBaru) {
-  const produk = getProduk();
-  if (index >= 0 && index < produk.length) {
-    produk[index] = itemBaru;
-    simpanProduk(produk);
-  }
-}
-
-// Hapus produk berdasarkan index
 function hapusProduk(index) {
-  const produk = getProduk();
-  if (index >= 0 && index < produk.length) {
-    produk.splice(index, 1);
-    simpanProduk(produk);
-  }
+  produkList.splice(index, 1)
 }
