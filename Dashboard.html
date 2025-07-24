@@ -1,38 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Etalase OutfitZarg</title>
-  <link rel="icon" href="/logo/OutfitZarg.png" type="image/x-icon" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Produk</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Bebas Neue -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome untuk ikon harga -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <style>
-    h1, h2, h3 {
-      font-family: 'Bebas Neue', sans-serif;
-    }
-  </style>
 </head>
-<body class="bg-gray-100 min-h-screen p-6">
-<div class="max-w-7xl mx-auto">
-    <h1 class="text-3xl text-center font-bold mb-6">DASHBOARD PRODUK</h1>
+<body class="p-6 bg-gray-100">
+  <h1 class="text-3xl font-bold mb-4">Dashboard Produk</h1>
+  <a href="tambah.html" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">+ Tambah Produk</a>
 
-    <form id="produk-form" class="bg-white p-6 rounded-lg shadow mb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-      <input type="text" name="nama" placeholder="Nama Produk" required class="border p-2 rounded"/>
-      <input type="number" name="harga" placeholder="Harga Produk" required class="border p-2 rounded"/>
-      <input type="text" name="video" placeholder="Nama File Video (cth: video.mp4)" required class="border p-2 rounded"/>
-      <button type="submit" class="md:col-span-3 bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Simpan Produk</button>
-    </form>
+  <div id="produk-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
 
-    <div id="produk-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <!-- Produk akan dirender oleh JavaScript -->
-    </div>
-
-    <a href="index.html" class="inline-block mt-10 text-blue-600 hover:underline">← Kembali ke Etalase</a>
-  </div>
+  <script src="/Database/data.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
