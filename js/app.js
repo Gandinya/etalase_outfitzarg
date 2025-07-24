@@ -14,7 +14,7 @@ function renderProduk() {
       <h3 class="text-lg font-bold">${item.nama}</h3>
       <p class="text-orange-600 font-semibold">Rp${item.harga.toLocaleString()}</p>
       <div class="mt-2 flex gap-2">
-        <a href="edit.html?index=${i}" class="bg-yellow-400 px-3 py-1 rounded text-sm">Edit</a>
+        <a href="/CRUD/edit.html?index=${i}" class="bg-yellow-400 px-3 py-1 rounded text-sm">Edit</a>
         <button onclick="hapusProdukHandler(${i})" class="bg-red-500 text-white px-3 py-1 rounded text-sm">Hapus</button>
       </div>
     `
