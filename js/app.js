@@ -22,7 +22,7 @@ function renderProduk() {
       <h3 class="text-lg font-bold text-gray-800">${item.nama}</h3>
       <p class="text-orange-600 font-semibold mb-3">Rp${item.harga.toLocaleString()}</p>
       <div class="flex gap-2">
-        <a href="edit.html?index=${i}" class="bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded text-sm text-black">Edit</a>
+        <a href="/CRUD/edit.html?index=${i}" class="bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded text-sm text-black">Edit</a>
         <button onclick="hapusProdukHandler(${i})" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">Hapus</button>
       </div>
     `
