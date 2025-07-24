@@ -1,48 +1,51 @@
-const STORAGE_KEY = "produkList";
-
-// Ambil data dari localStorage, jika belum ada gunakan data default
-let produkList = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [
+let produkList = [
   {
     nama: "Celana Baggy wanita",
     harga: 146850,
-    video: "OUTFIT BAGGY.mp4"
+    video: "OUTFIT BAGGY.mp4",
+    dihapus: false
   },
   {
     nama: "Celana Baggy Pria",
     harga: 155900,
-    video: "Celana Baggy Pria.mp4"
+    video: "Celana Baggy Pria.mp4",
+    dihapus: false
   },
   {
     nama: "Kemeja Fit Body Wanita",
     harga: 68400,
-    video: "KemejaCeweFitBody.mp4"
+    video: "KemejaCeweFitBody.mp4",
+    dihapus: false
   }
-];
+]
 
-// Simpan ke localStorage
-function simpanKeStorage() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(produkList));
-}
-
-// Ambil seluruh data produk
 function getProduk() {
-  return produkList;
+  return produkList.filter(p => !p.dihapus)
 }
 
-// Tambah produk baru
+function getSampah() {
+  return produkList.filter(p => p.dihapus)
+}
+
 function tambahProduk(produk) {
-  produkList.push(produk);
-  simpanKeStorage();
+  produk.dihapus = false
+  produkList.push(produk)
 }
 
-// Perbarui produk berdasarkan index
 function updateProduk(index, produkBaru) {
-  produkList[index] = produkBaru;
-  simpanKeStorage();
+  produkBaru.dihapus = produkList[index].dihapus
+  produkList[index] = produkBaru
 }
 
-// Hapus produk
 function hapusProduk(index) {
-  produkList.splice(index, 1);
-  simpanKeStorage();
+  produkList[index].dihapus = true
+}
+
+function pulihkanProduk(index) {
+  getSampah()[index].dihapus = false
+}
+
+function hapusPermanent(index) {
+  const indexAsli = produkList.findIndex((p, i) => p.dihapus && i === index)
+  if (indexAsli !== -1) produkList.splice(indexAsli, 1)
 }
