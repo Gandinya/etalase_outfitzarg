@@ -1,38 +1,30 @@
-// data.js
+const container = document.getElementById("produk-container")
+if (container) renderProduk()
 
-const STORAGE_KEY = "produkList";
-
-// Ambil semua produk dari localStorage
-function getProduk() {
-  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+function renderProduk() {
+  container.innerHTML = ""
+  getProduk().forEach((item, i) => {
+    const card = document.createElement("div")
+    card.className = "bg-white rounded shadow p-4"
+    card.innerHTML = `
+      <video controls class="w-full rounded mb-2">
+        <source src="video/${item.video}" type="video/mp4" />
+        Browser tidak mendukung video.
+      </video>
+      <h3 class="text-lg font-bold">${item.nama}</h3>
+      <p class="text-orange-600 font-semibold">Rp${item.harga.toLocaleString()}</p>
+      <div class="mt-2 flex gap-2">
+        <a href="edit.html?index=${i}" class="bg-yellow-400 px-3 py-1 rounded text-sm">Edit</a>
+        <button onclick="hapusProdukHandler(${i})" class="bg-red-500 text-white px-3 py-1 rounded text-sm">Hapus</button>
+      </div>
+    `
+    container.appendChild(card)
+  })
 }
 
-// Simpan seluruh data produk ke localStorage
-function simpanProduk(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-// Tambah 1 produk
-function tambahProduk(item) {
-  const produk = getProduk();
-  produk.push(item);
-  simpanProduk(produk);
-}
-
-// Perbarui 1 produk di index tertentu
-function updateProduk(index, itemBaru) {
-  const produk = getProduk();
-  if (index >= 0 && index < produk.length) {
-    produk[index] = itemBaru;
-    simpanProduk(produk);
-  }
-}
-
-// Hapus 1 produk berdasarkan index
-function hapusProduk(index) {
-  const produk = getProduk();
-  if (index >= 0 && index < produk.length) {
-    produk.splice(index, 1);
-    simpanProduk(produk);
+function hapusProdukHandler(index) {
+  if (confirm("Yakin ingin menghapus produk ini?")) {
+    hapusProduk(index)
+    renderProduk()
   }
 }
