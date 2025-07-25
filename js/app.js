@@ -30,9 +30,15 @@ function renderProduk() {
   })
 }
 
-function hapusProdukHandler(index) {
+function hapusProdukHandler(indexAktif) {
   if (confirm("Yakin ingin menghapus produk ini?")) {
-    hapusProduk(index) // soft-delete
-    renderProduk()
+    const indexAsli = getProdukAsliIndex(indexAktif)
+    if (indexAsli !== -1) {
+      hapusProduk(indexAsli) // soft delete
+      renderProduk()
+    } else {
+      alert("Produk tidak ditemukan.")
+    }
   }
 }
+
