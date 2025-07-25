@@ -57,26 +57,41 @@
   <script src="/Database/data.js"></script>
   <script src="/js/app.js"></script>
   
-  <script>
-    const urlParams = new URLSearchParams(window.location.search)
-    const index = parseInt(urlParams.get("index"))
-    const form = document.getElementById("produk-form")
-    const produk = getProduk()[index]
+ <script>
+  const urlParams = new URLSearchParams(window.location.search)
+  const indexAktif = parseInt(urlParams.get("index"))
 
-    form.nama.value = produk.nama
-    form.harga.value = produk.harga
-    form.video.value = produk.video
+  const produk = getProdukByIndexAktif(indexAktif)
+  const indexAsli = getProdukAsliIndex(indexAktif)
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault()
-      const nama = form.nama.value
-      const harga = parseInt(form.harga.value)
-      const video = form.video.value
-      updateProduk(index, { nama, harga, video })
-      alert("Produk diperbarui!")
-      window.location.href = "https://etalase-outfitzarg.vercel.app/azekapuire.html"
-    })
-  </script>
+  const form = document.getElementById("produk-form")
+
+  if (!produk || indexAsli === -1) {
+    alert("Produk tidak ditemukan!")
+    window.location.href = "azekapuire.html"
+  }
+
+  // Isi form
+  form.nama.value = produk.nama
+  form.harga.value = produk.harga
+  form.video.value = produk.video
+
+  // Submit
+  form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    const produkBaru = {
+      nama: form.nama.value,
+      harga: parseInt(form.harga.value),
+      video: form.video.value,
+      dihapus: false
+    }
+
+    updateProduk(indexAsli, produkBaru)
+    alert("Produk berhasil diperbarui!")
+    window.location.href = "azekapuire.html"
+  })
+</script>
+
   
 </body>
 </html>
