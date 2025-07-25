@@ -43,12 +43,12 @@
       </div>
       <div>
         <label class="block text-sm font-semibold mb-1 text-gray-700">Upload Video / Gambar</label>
-        <input type="file" name="media" accept=".mp4,.jpg,.jpeg,.png" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
+        <input type="file" name="video" accept=".mp4,.jpg,.jpeg,.png" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
       </div>
       <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition duration-200">Simpan Produk</button>
     </form>
     <div class="mt-4 text-center">
-      <a href="index.html" class="text-pink-600 hover:underline">← Kembali ke Daftar Produk</a>
+      <a href="https://etalase-outfitzarg.vercel.app" class="text-pink-600 hover:underline">← Kembali ke Daftar Produk</a>
     </div>
   </div>
 
@@ -60,7 +60,7 @@
       
       const nama = form.nama.value.trim()
       const harga = parseInt(form.harga.value)
-      const fileInput = form.media
+      const fileInput = form.video
       const file = fileInput.files[0]
 
       if (!nama || isNaN(harga) || !file) {
@@ -74,19 +74,18 @@
         return
       }
 
-      const namaFile = file.name
-      const isVideo = file.type === 'video/mp4'
-      const mediaPath = isVideo ? `video/${namaFile}` : `image/${namaFile}`
+      const video = file.name // hanya ambil nama file-nya
 
-      const produkBaru = { nama, harga, video: mediaPath, dihapus: false }
+      // simpan ke localStorage
+      const produkBaru = { nama, harga, video, dihapus: false }
 
       let produkList = JSON.parse(localStorage.getItem("produkList") || "[]")
       produkList.push(produkBaru)
       localStorage.setItem("produkList", JSON.stringify(produkList))
 
-      alert(`✅ Produk berhasil ditambahkan!\n\n📁 Sekarang upload file "${namaFile}" ke folder: /${isVideo ? 'video' : 'image'}/`)
+      alert("✅ Produk berhasil ditambahkan!\n\n📁 Silakan upload file ke folder /video secara manual.\n\nContoh:\n/video/" + video)
 
-      window.location.href = "index.html"
+      window.location.href = "https://etalase-outfitzarg.vercel.app"
     })
   </script>
 </body>
