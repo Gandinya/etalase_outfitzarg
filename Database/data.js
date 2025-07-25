@@ -73,21 +73,24 @@ function getProdukByIndexAktif(i) {
 if (produkList.length === 0) {
   produkList = [
     {
-      nama: "Celana Baggy wanita",
-      harga: 146850,
-      video: "OUTFIT BAGGY.mp4",
+      nama: "Kaos Hangover",
+      harga: 57000,
+      video: "kaos-hangover.mp4",
+      link: "https://shopee.co.id/kaos-hangover-original-123456",
       dihapus: false
     },
     {
-      nama: "Celana Baggy Pria",
-      harga: 155900,
-      video: "Celana Baggy Pria.mp4",
+      nama: "Kaos Hangover",
+      harga: 57000,
+      video: "kaos-hangover.mp4",
+      link: "https://shopee.co.id/kaos-hangover-original-123456",
       dihapus: false
     },
     {
-      nama: "Kemeja Fit Body Wanita",
-      harga: 68400,
-      video: "KemejaCeweFitBody.mp4",
+      nama: "Kaos Hangover",
+      harga: 57000,
+      video: "kaos-hangover.mp4",
+      link: "https://shopee.co.id/kaos-hangover-original-123456",
       dihapus: false
     }
   ]
