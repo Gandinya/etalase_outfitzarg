@@ -43,12 +43,14 @@
       location.reload()
     }
 
-    function hapusPermanent(index) {
-      if (confirm("Hapus permanen produk ini?")) {
-        hapusPermanent(index)
-        location.reload()
-      }
+    function hapusPermanenHandler(index) {
+    if (confirm("Hapus permanen produk ini?")) {
+      hapusPermanent(index) // memanggil dari data.js
+      alert("Produk dihapus permanen.")
+      location.reload()
     }
+  }
+
   </script>
 </body>
 </html>
