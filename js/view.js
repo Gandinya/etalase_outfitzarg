@@ -1,33 +1,36 @@
-const container = document.getElementById("produk-container")
+const container = document.getElementById("produk-container");
 
-if (container) renderProduk()
+if (container) renderProduk();
 
 function renderProduk() {
-  container.innerHTML = ""
-  const produkAktif = getProduk()
+  container.innerHTML = "";
+  const produkAktif = getProduk();
+
   if (produkAktif.length === 0) {
-    container.innerHTML = `<p class="text-gray-600">Belum ada produk ditambahkan.</p>`
-    return
+    container.innerHTML = `<p class="text-gray-600">Belum ada produk ditambahkan.</p>`;
+    return;
   }
 
   produkAktif.forEach((item, i) => {
-    const card = document.createElement("div")
-    card.className = "bg-white rounded-xl shadow p-4"
+    const card = document.createElement("a");
+    card.href = item.link; // Link ke Shopee
+    card.target = "_blank"; // Buka di tab baru
+    card.className = "block bg-white rounded-xl shadow p-4 hover:shadow-lg transition";
 
     card.innerHTML = `
-      <a href="${item.link}">
-        <video class="w-full h-auto rounded-t-xl" autoplay muted loop playsinline>
-          <source src="/video/${item.video}" type="video/mp4" />
-        </video>
-        <div class="p-3 text-center">
-          <p class="font-medium text-gray-700">${item.nama}</p>
-          <div class="flex justify-center items-center gap-2 mt-1 text-gray-600">
-            <i class="fa-solid fa-tags text-orange-500"></i>
-            <span class="text-base font-medium">Rp${item.harga.toLocaleString()}</span>
-          </div>
+      <video class="w-full h-auto rounded-md mb-2" autoplay muted loop playsinline>
+        <source src="/video/${item.video}" type="video/mp4" />
+        Browser tidak mendukung video.
+      </video>
+      <div class="text-center">
+        <p class="font-semibold text-gray-800">${item.nama}</p>
+        <div class="flex justify-center items-center gap-1 mt-1 text-gray-600">
+          <i class="fa-solid fa-tags text-orange-500"></i>
+          <span class="text-base font-medium">Rp${item.harga.toLocaleString()}</span>
         </div>
-      </a>
-    `
-    container.appendChild(card)
-  })
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
 }
