@@ -18,15 +18,27 @@
       font-family: 'Bebas Neue', sans-serif;
     }
     body {
-      background: linear-gradient(-45deg, #FFD700, #ADFF2F, #000000, #F0F8FF);
-      background-size: 400% 400%;
-      animation: gradient 10s ease infinite;
-    }
-    @keyframes gradient {
-      0% { background-position: 0% 50% }
-      50% { background-position: 100% 50% }
-      100% { background-position: 0% 100% }
-    }
+  background: linear-gradient(270deg, 
+    #ff0000,   
+    #ff00ff,   
+    #0000ff,   
+    #00ffff,   
+    #00ff00,   
+    #ffff00,   
+    #ff0000    
+  );
+  background-size: 1400% 1400%;
+  animation: rgbKeyboard 10s ease infinite;
+}
+
+@keyframes rgbKeyboard {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
+
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center">
