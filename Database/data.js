@@ -58,6 +58,17 @@ function hapusPermanent(indexSampah) {
   }
 }
 
+function getProdukAsliIndex(produkAktifIndex) {
+  const aktif = getProduk()
+  const produk = aktif[produkAktifIndex]
+  return produkList.findIndex(p => p === produk)
+}
+
+function getProdukByIndexAktif(i) {
+  return getProduk()[i]
+}
+
+
 // Tambah produk awal jika kosong
 if (produkList.length === 0) {
   produkList = [
