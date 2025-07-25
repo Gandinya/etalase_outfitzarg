@@ -34,11 +34,10 @@ function hapusProdukHandler(indexAktif) {
   if (confirm("Yakin ingin menghapus produk ini?")) {
     const indexAsli = getProdukAsliIndex(indexAktif)
     if (indexAsli !== -1) {
-      hapusProduk(indexAsli) // soft delete
+      hapusProduk(indexAsli)
       renderProduk()
     } else {
-      alert("Produk tidak ditemukan.")
+      alert("Gagal menghapus produk.")
     }
   }
 }
-
