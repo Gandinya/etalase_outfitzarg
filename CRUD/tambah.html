@@ -30,29 +30,44 @@
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center">
-  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Tambah Produk</h1>
-    <form id="produk-form" class="space-y-4">
-      <div>
-        <label class="block text-sm font-semibold mb-1 text-gray-700">Nama Produk</label>
-        <input type="text" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-1 text-gray-700">Harga</label>
-        <input type="number" name="harga" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
-      </div>
-      <div>
-        <label class="block text-sm font-semibold mb-1 text-gray-700">Upload Video / Gambar</label>
-        <input type="file" name="video" accept=".mp4,.jpg,.jpeg,.png" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none">
-      </div>
-      <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition duration-200">Simpan Produk</button>
-    </form>
-    <div class="mt-4 text-center">
-      <a href="https://etalase-outfitzarg.vercel.app" class="text-pink-600 hover:underline">← Kembali ke Daftar Produk</a>
-    </div>
-  </div>
+  <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl w-full max-w-lg border border-pink-200">
+  <h1 class="text-3xl font-bold mb-8 text-center text-gray-900 tracking-wide uppercase">Tambah Produk</h1>
 
-  <!-- Script handler form -->
+  <form id="produk-form" class="space-y-6">
+    
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Produk</label>
+      <input type="text" name="nama" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition duration-200">
+    </div>
+
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-1">Harga</label>
+      <input type="number" name="harga" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition duration-200">
+    </div>
+
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-1">Upload Gambar / Video</label>
+      <input type="file" name="video" accept=".mp4,.jpg,.jpeg,.png" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-pink-100 file:text-pink-700 hover:file:bg-pink-200">
+      <p class="text-xs text-gray-500 mt-1">Format yang didukung: .mp4, .jpg, .jpeg, .png</p>
+    </div>
+
+    <button type="submit"
+      class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-lg font-semibold tracking-wide transition duration-200 shadow-md">
+      Simpan Produk
+    </button>
+  </form>
+
+  <div class="mt-6 text-center">
+    <a href="https://etalase-outfitzarg.vercel.app"
+      class="text-sm text-pink-600 hover:text-pink-800 hover:underline transition duration-200">
+      ← Kembali ke Daftar Produk
+    </a>
+  </div>
+</div>
+
   <script>
     const form = document.getElementById("produk-form")
     form.addEventListener("submit", function (e) {
