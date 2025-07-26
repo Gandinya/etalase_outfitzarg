@@ -22,12 +22,23 @@ function getSampah() {
 }
 
 function tambahProduk(produk) {
+  // Validasi properti penting
+  if (!produk.nama || !produk.harga || !produk.video || !produk.link) {
+    console.error("Produk tidak lengkap:", produk)
+    return
+  }
+
   produk.dihapus = false
   produkList.push(produk)
   saveProdukList(produkList)
 }
 
 function updateProduk(index, produkBaru) {
+  if (!produkBaru.nama || !produkBaru.harga || !produkBaru.video || !produkBaru.link) {
+    console.error("Produk baru tidak lengkap:", produkBaru)
+    return
+  }
+
   produkBaru.dihapus = produkList[index].dihapus
   produkList[index] = produkBaru
   saveProdukList(produkList)
@@ -68,29 +79,28 @@ function getProdukByIndexAktif(i) {
   return getProduk()[i]
 }
 
-
 // Tambah produk awal jika kosong
 if (produkList.length === 0) {
   produkList = [
     {
-      nama: "Kaos Hangover",
+      nama: "Kaos Hangover Hitam",
       harga: 57000,
-      video: "kaos-hangover.mp4",
-      link: "https://shopee.co.id/kaos-hangover-original-123456",
+      video: "kaos-hangover-hitam.mp4",
+      link: "https://shopee.co.id/kaos-hangover-hitam-original",
       dihapus: false
     },
     {
-      nama: "Kaos Hangover",
-      harga: 57000,
-      video: "kaos-hangover.mp4",
-      link: "https://shopee.co.id/kaos-hangover-original-123456",
+      nama: "Kaos Hangover Abu",
+      harga: 59000,
+      video: "kaos-hangover-abu.mp4",
+      link: "https://shopee.co.id/kaos-hangover-abu-original",
       dihapus: false
     },
     {
-      nama: "Kaos Hangover",
-      harga: 57000,
-      video: "kaos-hangover.mp4",
-      link: "https://shopee.co.id/kaos-hangover-original-123456",
+      nama: "Kaos Hangover Putih",
+      harga: 60000,
+      video: "kaos-hangover-putih.mp4",
+      link: "https://shopee.co.id/kaos-hangover-putih-original",
       dihapus: false
     }
   ]
