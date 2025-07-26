@@ -35,6 +35,8 @@
   </div>
 
   <script src="/Database/data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
+  
   <script>
     const produkContainer = document.getElementById("produk-container");
     const searchInput = document.getElementById("searchInput");
@@ -55,18 +57,20 @@
           card.dataset.name = item.nama.toLowerCase();
         
           card.innerHTML = `
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="flex flex-col h-full">
-              <div class="w-full h-48 overflow-hidden">
-                <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                  <source src="video/${item.video}" type="video/mp4">
-                  Browser tidak mendukung video.
-                </video>
-              </div>
-              <div class="p-4 flex-grow flex flex-col justify-between">
-                <h3 class="text-lg font-bold mb-2 text-gray-800">${item.nama}</h3>
-                <p class="text-orange-600 font-semibold mt-auto"><i class="fas fa-tag"></i> Rp${item.harga.toLocaleString()}</p>
-              </div>
-            </a>
+            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
+            <div class="aspect-w-9 aspect-h-12 w-full overflow-hidden bg-black rounded-t-lg">
+              <video class="object-cover w-full h-full" autoplay muted loop playsinline>
+                <source src="video/${item.video}" type="video/mp4">
+                Browser tidak mendukung video.
+              </video>
+            </div>
+            <div class="p-4">
+              <h3 class="text-base font-bold text-gray-800 truncate">${item.nama}</h3>
+              <p class="text-orange-600 font-semibold mt-2">
+                <i class="fas fa-tag"></i> Rp${item.harga.toLocaleString()}
+              </p>
+            </div>
+          </a>
           `;
         
           produkContainer.appendChild(card);
