@@ -67,31 +67,3 @@ function getProdukAsliIndex(produkAktifIndex) {
 function getProdukByIndexAktif(i) {
   return getProduk()[i]
 }
-
-// Tambah produk awal jika kosong
-if (produkList.length === 0) {
-  produkList = [
-    {
-      nama: "Kaos Hangover",
-      harga: 57000,
-      video: "kaos-hangover.mp4",
-      link: "https://shopee.co.id/kaos-hangover-original-123456",
-      dihapus: false
-    },
-    {
-      nama: "Kaos Zarg Urban",
-      harga: 85000,
-      gambar: "zarg-urban.jpg",
-      link: "https://shopee.co.id/kaos-zarg-urban-987654",
-      dihapus: false
-    },
-    {
-      nama: "Kaos Basic Outfit",
-      harga: 49000,
-      video: "basic-outfit.mp4",
-      link: "https://shopee.co.id/kaos-basic-outfit-246810",
-      dihapus: false
-    }
-  ]
-  saveProdukList(produkList)
-}
