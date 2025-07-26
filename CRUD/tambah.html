@@ -17,7 +17,6 @@
     h1, h2, h3 {
       font-family: 'Bebas Neue', sans-serif;
     }
-
   </style>
 </head>
 <body class="bg-[url('/image/bg.jpg')] bg-cover bg-center min-h-screen flex items-center justify-center">
@@ -26,18 +25,22 @@
     <h1 class="text-3xl font-bold mb-8 text-center text-yellow-500 tracking-wide uppercase">Tambah Produk</h1>
 
     <form id="produk-form" class="space-y-6">
-
+      
+      <!-- Nama Produk -->
       <div>
         <label class="block text-sm font-semibold text-white mb-1">Nama Produk</label>
         <input type="text" name="nama" required
           class="w-full px-4 py-2 border border-white-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition duration-200 bg-white/70">
       </div>
 
+      <!-- Harga -->
       <div>
         <label class="block text-sm font-semibold text-white mb-1">Harga</label>
         <input type="number" name="harga" required
           class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition duration-200 bg-white/70">
       </div>
+
+      <!-- File Media -->
       <div>
         <label class="block text-sm font-semibold text-white mb-1">Nama File Media (contoh: produk.mp4 atau gambar.jpg)</label>
         <input type="text" id="mediaFile" required
@@ -46,6 +49,16 @@
         <p class="text-xs text-white mt-1">File harus ada di folder <code>/video</code> (untuk .mp4) atau <code>/image</code> (untuk .jpg/.png)</p>
       </div>
 
+      <!-- Link Shopee atau Tautan -->
+      <div>
+        <label class="block text-sm font-semibold text-white mb-1">Link Produk (Shopee, dll)</label>
+        <input type="url" id="linkProduk" placeholder="https://shopee.co.id/produk-anda"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-white/70 placeholder:text-sm"
+          required>
+        <p class="text-xs text-white mt-1">Contoh: https://shopee.co.id/produk-anda</p>
+      </div>
+
+      <!-- Tombol -->
       <button type="submit"
         class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded-lg tracking-wide transition duration-200 shadow-lg shadow-yellow-300/50">
         Simpan Produk
@@ -64,27 +77,39 @@
   <script src="/js/app.js"></script>
   <script>
     const form = document.getElementById("produk-form")
-  
+
     form.addEventListener("submit", function (e) {
       e.preventDefault()
-  
-      const nama = form.elements["nama"].value
+
+      const nama = form.elements["nama"].value.trim()
       const harga = parseInt(form.elements["harga"].value)
       const media = document.getElementById("mediaFile").value.trim()
-  
-      if (!media) {
-        alert("Nama file media harus diisi.")
+      const link = document.getElementById("linkProduk").value.trim()
+
+      if (!media || !link) {
+        alert("Semua kolom wajib diisi.")
         return
       }
-  
-      // Tambahkan langsung tanpa upload
-      tambahProduk({ nama, harga, video: media })
+
+      // Deteksi jenis file otomatis
+      const ext = media.split('.').pop().toLowerCase()
+      const produk = {
+        nama,
+        harga,
+        link
+      }
+
+      if (["mp4", "webm", "ogg"].includes(ext)) {
+        produk.video = media
+      } else {
+        produk.gambar = media
+      }
+
+      tambahProduk(produk)
+
       alert("Produk berhasil ditambahkan!")
       window.location.href = "https://etalase-outfitzarg.vercel.app/azekapuire.html"
     })
   </script>
-
-
-
 </body>
 </html>
