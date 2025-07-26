@@ -22,23 +22,12 @@ function getSampah() {
 }
 
 function tambahProduk(produk) {
-  // Validasi properti penting
-  if (!produk.nama || !produk.harga || !produk.video || !produk.link) {
-    console.error("Produk tidak lengkap:", produk)
-    return
-  }
-
   produk.dihapus = false
   produkList.push(produk)
   saveProdukList(produkList)
 }
 
 function updateProduk(index, produkBaru) {
-  if (!produkBaru.nama || !produkBaru.harga || !produkBaru.video || !produkBaru.link) {
-    console.error("Produk baru tidak lengkap:", produkBaru)
-    return
-  }
-
   produkBaru.dihapus = produkList[index].dihapus
   produkList[index] = produkBaru
   saveProdukList(produkList)
@@ -83,24 +72,24 @@ function getProdukByIndexAktif(i) {
 if (produkList.length === 0) {
   produkList = [
     {
-      nama: "Kaos Hangover Hitam",
+      nama: "Kaos Hangover",
       harga: 57000,
-      video: "kaos-hangover-hitam.mp4",
-      link: "https://shopee.co.id/kaos-hangover-hitam-original",
+      video: "kaos-hangover.mp4",
+      link: "https://shopee.co.id/kaos-hangover-original-123456",
       dihapus: false
     },
     {
-      nama: "Kaos Hangover Abu",
-      harga: 59000,
-      video: "kaos-hangover-abu.mp4",
-      link: "https://shopee.co.id/kaos-hangover-abu-original",
+      nama: "Kaos Zarg Urban",
+      harga: 85000,
+      gambar: "zarg-urban.jpg",
+      link: "https://shopee.co.id/kaos-zarg-urban-987654",
       dihapus: false
     },
     {
-      nama: "Kaos Hangover Putih",
-      harga: 60000,
-      video: "kaos-hangover-putih.mp4",
-      link: "https://shopee.co.id/kaos-hangover-putih-original",
+      nama: "Kaos Basic Outfit",
+      harga: 49000,
+      video: "basic-outfit.mp4",
+      link: "https://shopee.co.id/kaos-basic-outfit-246810",
       dihapus: false
     }
   ]
