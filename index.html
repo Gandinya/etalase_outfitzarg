@@ -59,8 +59,8 @@
         
           card.innerHTML = `
             <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="aspect-w-9 aspect-h-12 w-full overflow-hidden bg-black rounded-t-lg">
-              <video class="object-cover w-full h-full" autoplay muted loop playsinline>
+            <div class="w-full h-64 overflow-hidden bg-black rounded-t-lg relative">
+              <video class="absolute w-full h-full object-cover" autoplay muted loop playsinline preload="auto">
                 <source src="video/${item.video}" type="video/mp4">
                 Browser tidak mendukung video.
               </video>
