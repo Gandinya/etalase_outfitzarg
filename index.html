@@ -20,7 +20,8 @@
   </style>
 </head>
 <body class="bg-gray-100 min-h-screen p-6">
-      <header class="sticky top-0 bg-transparent z-50 shadow w-full mx-[20%]">
+  <div class="max-w-7xl mx-auto">
+      <header class="sticky top-0 bg-transparent bg-white z-50 shadow w-full">
         <h1 class="text-3xl font-bold mb-6 text-center">LINK ETALASE OUTFITZARG</h1>
         <input
           type="text"
@@ -28,7 +29,6 @@
           placeholder="Cari produk sesuai caption..."
           class="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-400"/>
       </header>
-  <div class="max-w-7xl mx-auto">
 
 
     <div id="produk-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
@@ -61,7 +61,7 @@
           card.innerHTML = `
             <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
             <div class="w-full h-64 overflow-hidden bg-black rounded-t-lg relative">
-              <video class="absolute w-full h-full object-cover" autoplay muted loop playsinline preload="auto">
+             <video class="absolute w-full h-full object-cover" autoplay muted loop playsinline preload="none" poster="/thumbnail/${item.video.replace('.mp4', '.jpg')}">
                 <source src="video/${item.video}" type="video/mp4">
                 Browser tidak mendukung video.
               </video>
