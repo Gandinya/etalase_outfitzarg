@@ -58,6 +58,13 @@ function getProduk() {
         link: "https://s.shopee.co.id/AUjMpz0nO3",
         dihapus: false
       },
+      {
+        nama: "Hangover - PLEASURE - T-Shirt",
+        harga: 75000,
+        video: "PLEASURE.mp4",
+        link: "https://s.shopee.co.id/8zuZCYRref",
+        dihapus: false
+      },
     ];
     produkList = dataAwal;
     saveProdukList(produkList);
