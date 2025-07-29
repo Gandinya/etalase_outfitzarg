@@ -94,7 +94,7 @@
       card.innerHTML = `
         <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
         <div class="w-full h-64 overflow-hidden bg-black rounded-t-lg relative">
-         <video class="absolute w-full h-full object-cover" autoplay muted loop playsinline preload="none" poster="/thumbnail/${item.video.replace('.mp4', '.jpg')}">
+         <video class="absolute w-full h-full object-cover" autoplay muted loop playsinline preload="none" poster="/thumbnail/${item.video.replace('.mp4', '.jpg', '.png')}">
             <source src="video/${item.video}" type="video/mp4">
             Browser tidak mendukung video.
           </video>
