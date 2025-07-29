@@ -1,7 +1,3 @@
-// File: /Database/data.js
-
-const STORAGE_KEY = "produk";
-
 function loadProdukList() {
   const data = localStorage.getItem(STORAGE_KEY);
   return data ? JSON.parse(data) : [];
