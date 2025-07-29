@@ -1,6 +1,6 @@
 // File: /Database/data.js
 
-const STORAGE_KEY = "produkListZarg";
+const STORAGE_KEY = "produk";
 
 // Ambil data dari localStorage
 function loadProdukList() {
