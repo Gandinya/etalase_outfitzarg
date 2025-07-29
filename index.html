@@ -39,58 +39,67 @@
   <script src="/Database/data.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
   
-  <script>
-    const produkContainer = document.getElementById("produk-container");
-    const searchInput = document.getElementById("searchInput");
+ <script>
+  const produkContainer = document.getElementById("produk-container");
+  const searchInput = document.getElementById("searchInput");
 
-    const produk = getProduk(); // ambil dari data.js
+  const produk = getProduk(); // ambil dari data.js
 
-    function renderView(produkList) {
-      produkContainer.innerHTML = "";
+  // ⬇️ Tambahkan data produk baru di sini
+  produk.push({
+    nama: "Kaos Lengan Panjang Premium",
+    harga: 88000,
+    video: "KaosPanjangPremium.mp4",
+    link: "https://s.shopee.co.id/newproduklink",
+    dihapus: false
+  });
 
-      if (produkList.length === 0) {
-        produkContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
-        return;
-      }
+  // Render semua produk pertama kali
+  renderView(produk);
 
-        produkList.forEach((item) => {
-          const card = document.createElement("div");
-          card.className = "bg-white rounded-lg shadow-md overflow-hidden product flex flex-col";
-          card.dataset.name = item.nama.toLowerCase();
-        
-          card.innerHTML = `
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="w-full h-64 overflow-hidden bg-black rounded-t-lg relative">
-             <video class="absolute w-full h-full object-cover" autoplay muted loop playsinline preload="none" poster="/thumbnail/${item.video.replace('.mp4', '.jpg')}">
-                <source src="video/${item.video}" type="video/mp4">
-                Browser tidak mendukung video.
-              </video>
-            </div>
-            <div class="p-4">
-              <h3 class="text-base font-bold text-4xl text-gray-800 truncate">${item.nama}</h3>
-              <p class="text-orange-600 font-semibold mt-2">
-                <i class="fas fa-tag"></i> Rp${item.harga.toLocaleString()}
-              </p>
-            </div>
-          </a>
-          `;
-        
-          produkContainer.appendChild(card);
-        });
+  function renderView(produkList) {
+    produkContainer.innerHTML = "";
 
+    if (produkList.length === 0) {
+      produkContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
+      return;
     }
 
-    // Render semua produk pertama kali
-    renderView(produk);
-
-    // Fitur pencarian
-    searchInput.addEventListener("input", () => {
-      const keyword = searchInput.value.toLowerCase();
-      const filtered = produk.filter((item) =>
-        item.nama.toLowerCase().includes(keyword)
-      );
-      renderView(filtered);
+    produkList.forEach((item) => {
+      const card = document.createElement("div");
+      card.className = "bg-white rounded-lg shadow-md overflow-hidden product flex flex-col";
+      card.dataset.name = item.nama.toLowerCase();
+    
+      card.innerHTML = `
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
+        <div class="w-full h-64 overflow-hidden bg-black rounded-t-lg relative">
+         <video class="absolute w-full h-full object-cover" autoplay muted loop playsinline preload="none" poster="/thumbnail/${item.video.replace('.mp4', '.jpg')}">
+            <source src="video/${item.video}" type="video/mp4">
+            Browser tidak mendukung video.
+          </video>
+        </div>
+        <div class="p-4">
+          <h3 class="text-base font-bold text-4xl text-gray-800 truncate">${item.nama}</h3>
+          <p class="text-orange-600 font-semibold mt-2">
+            <i class="fas fa-tag"></i> Rp${item.harga.toLocaleString()}
+          </p>
+        </div>
+      </a>
+      `;
+    
+      produkContainer.appendChild(card);
     });
-  </script>
+  }
+
+  // Fitur pencarian
+  searchInput.addEventListener("input", () => {
+    const keyword = searchInput.value.toLowerCase();
+    const filtered = produk.filter((item) =>
+      item.nama.toLowerCase().includes(keyword)
+    );
+    renderView(filtered);
+  });
+</script>
+
 </body>
 </html>
