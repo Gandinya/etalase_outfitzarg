@@ -22,16 +22,16 @@
 <body class="bg-gray-100 min-h-screen p-6">
   <div class="max-w-7xl mx-auto">
       <header class="sticky top-0 bg-gray-100 z-50 shadow w-full">
-        <h1 class="text-3xl font-bold mb-6 text-center">LINK ETALASE OUTFITZARG</h1>
+        <h1 class="text-3xl font-bold mb-6 text-center">LINK ETALASE JERSEYZARG</h1>
         <input
           type="text"
           id="searchInput"
-          placeholder="Cari produk sesuai caption..."
+          placeholder="Cari Jersey sesuai caption..."
           class="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-400"/>
       </header>
 
 
-    <div id="produk-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    <div id="jersey-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
     
   </div>
 
@@ -40,13 +40,14 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
   
  <script>
-  const produkContainer = document.getElementById("produk-container");
+  const STORAGE_KEY = "jersey";
+  const jerseyContainer = document.getElementById("jersey-container");
   const searchInput = document.getElementById("searchInput");
 
-  const produk = getProduk(); // ambil dari data.js
+  const jersey = getJersey(); // ambil dari data.js
 
   // ⬇️ Tambahkan data produk baru di sini
-  produk.push(
+  jersey.push(
     {
         nama: "Hangover - PLEASURE - T-Shirt",
         harga: 75000,
@@ -54,91 +55,20 @@
         link: "https://s.shopee.co.id/8zuZCYRref",
         dihapus: false
     },
-    {
-      nama: "Hangover - NEIL - T-Shirt",
-      harga: 75000,
-      video: "NEIL.mp4",
-      link: "https://s.shopee.co.id/7fPCt6mqui",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - SLY - T-Shirt",
-      harga: 75000,
-      video: "SLY.mp4",
-      link: "https://s.shopee.co.id/3AwnWovnJC",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - NAVETTA  - T-Shirt",
-      harga: 75000,
-      video: "NAVETTA.mp4",
-      link: "https://s.shopee.co.id/8ALTUqVEET",
-      dihapus: false
-    },
-    {
-      nama: "Patrobas Basic Black White / All Black / Off White Original",
-      harga: 225377,
-      video: "SEPATU CASUAL.mp4",
-      link: "https://s.shopee.co.id/9znHGiazdy",
-      dihapus: false
-    },
-    {
-      nama: "Pluviophile - Celana Jeans wide leg gombrong Wisker Think Retro",
-      harga: 199000,
-      video: "Pluviophile.mp4",
-      link: "https://s.shopee.co.id/2VhGnszfZH",
-      dihapus: false
-    },
-    {
-      nama: "Nebula Tshirt Vintage Fall Out Boy",
-      harga: 68763,
-      video: "Nebula.mp4",
-      link: "https://s.shopee.co.id/1qRa2uTipg",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - 4 STAR - Kaos Lengan Pendek Pria & Wanita",
-      harga: 75000,
-      video: "4 STAR.mp4",
-      link: "https://s.shopee.co.id/6pqHXL5coy",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - HOME - Kaos Lengan Pendek Pria & Wanita",
-      harga: 75000,
-      video: "HOME.mp4",
-      link: "https://s.shopee.co.id/40W6AhIMLu",
-      dihapus: false
-    },
-    {
-      nama: "Brick Mansions - Urban Street Black White Sepatu Casual Pria Wanita",
-      harga: 139900,
-      video: "Mansions.mp4",
-      link: "https://s.shopee.co.id/8pbNIVM5uW",
-      dihapus: false
-    },
-    {
-      nama: "Kemeja Polo - IZMO",
-      harga: 120000,
-      video: "Bergaris.mp4",
-      link: "https://s.shopee.co.id/3LGQl9DSaM",
-      dihapus: false
-    },
-    
              );
 
   // Render semua produk pertama kali
   renderView(produk);
 
-  function renderView(produkList) {
-    produkContainer.innerHTML = "";
+  function renderView(jerseyList) {
+    jerseyContainer.innerHTML = "";
 
-    if (produkList.length === 0) {
-      produkContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
+    if (jerseyList.length === 0) {
+      jerseyContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
       return;
     }
 
-    produkList.forEach((item) => {
+    jerseyList.forEach((item) => {
       const card = document.createElement("div");
       card.className = "bg-white rounded-lg shadow-md overflow-hidden product flex flex-col";
       card.dataset.name = item.nama.toLowerCase();
@@ -160,7 +90,7 @@
       </a>
       `;
     
-      produkContainer.appendChild(card);
+      jerseyContainer.appendChild(card);
     });
   }
 
