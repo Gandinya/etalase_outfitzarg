@@ -41,27 +41,6 @@ function getProduk() {
         link: "https://s.shopee.co.id/8ALKJ88hGX",
         dihapus: false
       },
-      {
-        nama: "Hangover - WOLLARD - Kaos Lengan Pendek Pria & Wanita",
-        harga: 75000,
-        video: "Hangover - WOLLARD.mp4",
-        link: "https://s.shopee.co.id/8pb8qWE95N",
-        dihapus: false
-      },
-      {
-        nama: "Hangover - HGVR 2.0 - Kaos Lengan Pendek Pria & Wanita",
-        harga: 75000,
-        video: "HGVR 2.0.mp4",
-        link: "https://s.shopee.co.id/8KesFklkU5",
-        dihapus: false
-      },
-      {
-        nama: "Hangover - SALAZAR - Kaos Lengan Pendek Pria & Wanita",
-        harga: 75000,
-        video: "RIDDLE.mp4",
-        link: "https://s.shopee.co.id/AUjMpz0nO3",
-        dihapus: false
-      },
       
     ];
 
