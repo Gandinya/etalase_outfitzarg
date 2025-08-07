@@ -13,4 +13,11 @@ const jerseyList = [
     link: "https://s.shopee.co.id/4L8yCdZnWK",
     dihapus: false
   },
+  {
+    nama: "Elshoot Global | Jersey Culture | Forever Green",
+    harga: 200000,
+    video: "Forever Green.mp4",
+    link: "https://s.shopee.co.id/6fWu8qgj9z",
+    dihapus: false
+  },
 ];
