@@ -20,4 +20,11 @@ const jerseyList = [
     link: "https://s.shopee.co.id/6fWu8qgj9z",
     dihapus: false
   },
+  {
+    nama: "Elshoot Global | Jersey Culture | Fujihira",
+    harga: 190000,
+    video: "Fujihira.mp4",
+    link: "https://s.shopee.co.id/8pbho5kHBt",
+    dihapus: false
+  },
 ];
