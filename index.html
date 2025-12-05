@@ -1,261 +1,294 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Etalase OutfitZarg</title>
-  <link rel="icon" href="/logo/OutfitZarg.png" type="image/x-icon" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etalase OutfitZarg</title>
+    <link rel="icon" href="/logo/OutfitZarg.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Bebas Neue -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <!-- Bebas Neue -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Pirata One -->
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
 
-  <style>
-    h1, {
-      font-family: 'Bebas Neue', sans-serif;
-    }
-  </style>
-</head>
-<body class="bg-gray-100 min-h-screen p-6">
-  <div class="max-w-7xl mx-auto">
-      <header class="sticky top-0 bg-gray-100 z-50 shadow w-full border-none px-6 py-4">
-        <h1 class="text-3xl font-bold mb-6 text-center">LINK ETALASE OUTFITZARG</h1>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Cari produk sesuai caption..."
-          class="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-400"/>
-      </header>
+    <style>
+        /* H1 default diganti jadi class khusus */
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+        }
 
+        /* Font untuk judul horor */
+        .font-creep {
+            font-family: 'Pirata One', cursive !important;
+            letter-spacing: 2px;
+        }
 
+        /* Card lebih gelap */
+        .product-card {
+            background-color: #111;
+            border: 1px solid #222;
+            transition: 0.2s ease-in-out;
+        }
 
-    <div id="produk-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-    
-  </div>
-  
-  <footer class="bg-gray-900 text-white mt-10 w-full">
-    <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+        .product-card:hover {
+            transform: scale(1.03);
+            border-color: #444;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        }
 
-      <!-- Logo & Deskripsi -->
-      <div>
-        <h2 class="text-2xl font-bold mb-4">OutfitZarg</h2>
-        <p class="text-gray-400 text-sm">
-          Etalase fashion terbaik untuk gaya harian kamu. Kualitas premium, harga bersahabat.
-        </p>
-      </div>
-  
-      <!-- Navigasi -->
-      <div>
-        <h3 class="text-lg font-semibold mb-4">TIPE PRODUK</h3>
-        <ul class="space-y-2 text-gray-400">
-          <li class="hover:text-white transition">CELANA</li>
-          <li class="hover:text-white transition">KAOS</li>
-          <li class="hover:text-white transition">KEMEJA</li>
-          <li class="hover:text-white transition">OUTFIT KECE</li>
-        </ul>
-      </div>
-  
-      <!-- Bantuan -->
-      <div>
-        <h3 class="text-lg font-semibold mb-4">LANGSUNG AJA KLIK LINKNYA</h3>
-        <ul class="space-y-2 text-gray-400">
-          <li class="hover:text-white transition">LINK LANGSUNG KE SHOPEE</li>
-          <li class="hover:text-white transition">ALL PRODUK DISCOUNT</li>
-          <li class="hover:text-white transition">KUALITAS DUNIA, HARGA TERJANGKAU</li>
-          <li class="hover:text-white transition">#AZEKAPUIRE</li>
-        </ul>
-      </div>
-  
-      <!-- Sosial Media -->
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Ikuti Kami</h3>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/outfitzarg/" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
-          <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+        /* Search input */
+        #searchInput {
+            background-color: #0f0f0f !important;
+            border: 1px solid #333;
+            color: #fff;
+        }
+
+        #searchInput:focus {
+            border-color: #00aaff;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+        }
+    </style>
+
+<body class="bg-black min-h-screen p-6">
+    <div class="max-w-7xl mx-auto">
+
+        <header class="sticky top-0 bg-black bg-opacity-80 backdrop-blur-md z-50 border-b border-gray-800 px-6 py-4">
+            <h1 class="text-4xl text-white font-creep font-bold mb-6 text-center drop-shadow-lg">
+                LINK ETALASE OUTFITZARG
+            </h1>
+
+            <input type="text" id="searchInput" placeholder="Cari produk sesuai caption..."
+                class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:border-blue-400" />
+        </header>
+
+        <div id="produk-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
         </div>
+
     </div>
-  </div>
 
-  <!-- Garis bawah -->
-  <div class="border-t border-gray-700 py-4 text-center text-gray-500 text-sm">
-    &copy; 2025 Mamang Ganuy All rights reserved.
-  </div>
-</footer>
+    <footer class="bg-gray-950 text-white mt-10 w-full border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-<!-- Font Awesome CDN untuk icon -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+            <!-- Logo -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4">OutfitZarg</h2>
+                <p class="text-gray-400 text-sm">
+                    Etalase fashion terbaik untuk gaya harian kamu. Kualitas premium, harga bersahabat.
+                </p>
+            </div>
+
+            <!-- Navigasi -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">TIPE PRODUK</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li class="hover:text-white transition">CELANA</li>
+                    <li class="hover:text-white transition">KAOS</li>
+                    <li class="hover:text-white transition">KEMEJA</li>
+                    <li class="hover:text-white transition">OUTFIT KECE</li>
+                </ul>
+            </div>
+
+            <!-- Bantuan -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">LANGSUNG AJA KLIK LINKNYA</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li class="hover:text-white transition">LINK LANGSUNG KE SHOPEE</li>
+                    <li class="hover:text-white transition">ALL PRODUK DISCOUNT</li>
+                    <li class="hover:text-white transition">KUALITAS DUNIA, HARGA TERJANGKAU</li>
+                    <li class="hover:text-white transition">#AZEKAPUIRE</li>
+                </ul>
+            </div>
+
+            <!-- Sosmed -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">Ikuti Kami</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/outfitzarg/" class="text-gray-400 hover:text-white transition"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 py-4 text-center text-gray-500 text-sm">
+            &copy; 2025 Mamang Ganuy. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Font Awesome CDN untuk icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 
-  
-  <script src="/Database/data.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
-  
- <script>
-  const produkContainer = document.getElementById("produk-container");
-  const searchInput = document.getElementById("searchInput");
 
-  const produk = getProduk(); // ambil dari data.js
+    <script src="/Database/data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
 
-  // ⬇️ Tambahkan data produk baru di sini
-  produk.push(
-    {
-        nama: "Hangover - WOLLARD - Kaos Lengan Pendek Pria & Wanita",
-        harga: 85000,
-        video: "Hangover - WOLLARD.mp4",
-        link: "https://s.shopee.co.id/8pb8qWE95N",
-        dihapus: false
-    },
-    {
-        nama: "Hangover - HGVR 2.0 - Kaos Lengan Pendek Pria & Wanita",
-        harga: 85000,
-        video: "HGVR 2.0.mp4",
-        link: "https://s.shopee.co.id/8KesFklkU5",
-        dihapus: false
-    },
-    {
-        nama: "Hangover - SALAZAR - Kaos Lengan Pendek Pria & Wanita",
-        harga: 85000,
-        video: "RIDDLE.mp4",
-        link: "https://s.shopee.co.id/AUjMpz0nO3",
-        dihapus: false
-    },
-    {
-        nama: "Hangover - PLEASURE - T-Shirt",
-        harga: 85000,
-        video: "PLEASURE.mp4",
-        link: "https://s.shopee.co.id/8zuZCYRref",
-        dihapus: false
-    },
-    {
-      nama: "Hangover - NEIL - T-Shirt",
-      harga: 85000,
-      video: "NEIL.mp4",
-      link: "https://s.shopee.co.id/7fPCt6mqui",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - SLY - T-Shirt",
-      harga: 85000,
-      video: "SLY.mp4",
-      link: "https://s.shopee.co.id/3AwnWovnJC",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - NAVETTA  - T-Shirt",
-      harga: 85000,
-      video: "NAVETTA.mp4",
-      link: "https://s.shopee.co.id/8ALTUqVEET",
-      dihapus: false
-    },
-    {
-      nama: "Patrobas Basic Black White / All Black / Off White Original",
-      harga: 225377,
-      video: "SEPATU CASUAL.mp4",
-      link: "https://s.shopee.co.id/9znHGiazdy",
-      dihapus: false
-    },
-    {
-      nama: "Pluviophile - Celana Jeans wide leg gombrong Wisker Think Retro",
-      harga: 199000,
-      video: "Pluviophile.mp4",
-      link: "https://s.shopee.co.id/2VhGnszfZH",
-      dihapus: false
-    },
-    {
-      nama: "Nebula Tshirt Vintage Fall Out Boy",
-      harga: 68763,
-      video: "Nebula.mp4",
-      link: "https://s.shopee.co.id/1qRa2uTipg",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - 4 STAR - Kaos Lengan Pendek Pria & Wanita",
-      harga: 85000,
-      video: "4 STAR.mp4",
-      link: "https://s.shopee.co.id/6pqHXL5coy",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - HOME - Kaos Lengan Pendek Pria & Wanita",
-      harga: 85000,
-      video: "HOME.mp4",
-      link: "https://s.shopee.co.id/40W6AhIMLu",
-      dihapus: false
-    },
-    {
-      nama: "Brick Mansions - Urban Street Black White Sepatu Casual Pria Wanita",
-      harga: 139900,
-      video: "Mansions.mp4",
-      link: "https://s.shopee.co.id/8pbNIVM5uW",
-      dihapus: false
-    },
-    {
-      nama: "Kemeja Polo - IZMO",
-      harga: 120000,
-      video: "Bergaris.mp4",
-      link: "https://s.shopee.co.id/3LGQl9DSaM",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - RILEY - Kaos Lengan Pendek Pria & Wanita",
-      harga: 85000,
-      video: "RILEY.mp4",
-      link: "https://s.shopee.co.id/qZ7OGUvqv",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - ARE U HUMAN - Kaos Lengan Pendek Pria & Wanita",
-      harga: 85000,
-      video: "HUMAN.mp4",
-      link: "https://s.shopee.co.id/8zusNZr17f",
-      dihapus: false
-    },
-    {
-      nama: "Fairgoods Celana Jeans Reguler Nakama Whisker Washed Blue",
-      harga: 174000,
-      video: "NAKAMA.mp4",
-      link: "https://s.shopee.co.id/709o1MNs6o",
-      dihapus: false
-    },
-    {
-      nama: "Hangover - YOUNG CREW - Kaos Lengan Pendek Pria & Wanita",
-      harga: 85000,
-      video: "YOUNG CREW.mp4",
-      link: "https://s.shopee.co.id/60HUzXg9BL",
-      dihapus: false
-    },
-    {
-      nama: "THE SPESIALIS TERROR",
-      harga: 250000,
-      video: "terror.mp4",
-      link: "https://s.shopee.co.id/802xNKlNCP",
-      dihapus: false
-    },
-    
-             );
+    <script>
+        const produkContainer = document.getElementById("produk-container");
+        const searchInput = document.getElementById("searchInput");
 
-  // Render semua produk pertama kali
-  renderView(produk);
+        const produk = getProduk(); // ambil dari data.js
 
-  function renderView(produkList) {
-    produkContainer.innerHTML = "";
+        // ⬇️ Tambahkan data produk baru di sini
+        produk.push(
+            {
+                nama: "Hangover - WOLLARD - Kaos Lengan Pendek Pria & Wanita",
+                harga: 85000,
+                video: "Hangover - WOLLARD.mp4",
+                link: "https://s.shopee.co.id/8pb8qWE95N",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - HGVR 2.0 - Kaos Lengan Pendek Pria & Wanita",
+                harga: 85000,
+                video: "HGVR 2.0.mp4",
+                link: "https://s.shopee.co.id/8KesFklkU5",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - SALAZAR - Kaos Lengan Pendek Pria & Wanita",
+                harga: 85000,
+                video: "RIDDLE.mp4",
+                link: "https://s.shopee.co.id/AUjMpz0nO3",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - PLEASURE - T-Shirt",
+                harga: 85000,
+                video: "PLEASURE.mp4",
+                link: "https://s.shopee.co.id/8zuZCYRref",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - NEIL - T-Shirt",
+                harga: 85000,
+                video: "NEIL.mp4",
+                link: "https://s.shopee.co.id/7fPCt6mqui",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - SLY - T-Shirt",
+                harga: 85000,
+                video: "SLY.mp4",
+                link: "https://s.shopee.co.id/3AwnWovnJC",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - NAVETTA  - T-Shirt",
+                harga: 85000,
+                video: "NAVETTA.mp4",
+                link: "https://s.shopee.co.id/8ALTUqVEET",
+                dihapus: false
+            },
+            {
+                nama: "Patrobas Basic Black White / All Black / Off White Original",
+                harga: 225377,
+                video: "SEPATU CASUAL.mp4",
+                link: "https://s.shopee.co.id/9znHGiazdy",
+                dihapus: false
+            },
+            {
+                nama: "Pluviophile - Celana Jeans wide leg gombrong Wisker Think Retro",
+                harga: 199000,
+                video: "Pluviophile.mp4",
+                link: "https://s.shopee.co.id/2VhGnszfZH",
+                dihapus: false
+            },
+            {
+                nama: "Nebula Tshirt Vintage Fall Out Boy",
+                harga: 68763,
+                video: "Nebula.mp4",
+                link: "https://s.shopee.co.id/1qRa2uTipg",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - 4 STAR - Kaos Lengan Pendek Pria & Wanita",
+                harga: 85000,
+                video: "4 STAR.mp4",
+                link: "https://s.shopee.co.id/6pqHXL5coy",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - HOME - Kaos Lengan Pendek Pria & Wanita",
+                harga: 85000,
+                video: "HOME.mp4",
+                link: "https://s.shopee.co.id/40W6AhIMLu",
+                dihapus: false
+            },
+            {
+                nama: "Brick Mansions - Urban Street Black White Sepatu Casual Pria Wanita",
+                harga: 139900,
+                video: "Mansions.mp4",
+                link: "https://s.shopee.co.id/8pbNIVM5uW",
+                dihapus: false
+            },
+            {
+                nama: "Kemeja Polo - IZMO",
+                harga: 120000,
+                video: "Bergaris.mp4",
+                link: "https://s.shopee.co.id/3LGQl9DSaM",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - RILEY - Kaos Lengan Pendek Pria & Wanita",
+                harga: 85000,
+                video: "RILEY.mp4",
+                link: "https://s.shopee.co.id/qZ7OGUvqv",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - ARE U HUMAN - Kaos Lengan Pendek Pria & Wanita",
+                harga: 85000,
+                video: "HUMAN.mp4",
+                link: "https://s.shopee.co.id/8zusNZr17f",
+                dihapus: false
+            },
+            {
+                nama: "Fairgoods Celana Jeans Reguler Nakama Whisker Washed Blue",
+                harga: 174000,
+                video: "NAKAMA.mp4",
+                link: "https://s.shopee.co.id/709o1MNs6o",
+                dihapus: false
+            },
+            {
+                nama: "Hangover - YOUNG CREW - Kaos Lengan Pendek Pria & Wanita",
+                harga: 85000,
+                video: "YOUNG CREW.mp4",
+                link: "https://s.shopee.co.id/60HUzXg9BL",
+                dihapus: false
+            },
+            {
+                nama: "THE SPESIALIS TERROR",
+                harga: 250000,
+                video: "terror.mp4",
+                link: "https://s.shopee.co.id/802xNKlNCP",
+                dihapus: false
+            },
 
-    if (produkList.length === 0) {
-      produkContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
-      return;
-    }
+        );
 
-    produkList.forEach((item) => {
-      const card = document.createElement("div");
-      card.className = "bg-white rounded-lg shadow-md overflow-hidden product flex flex-col";
-      card.dataset.name = item.nama.toLowerCase();
-    
-      card.innerHTML = `
+        // Render semua produk pertama kali
+        renderView(produk);
+
+        function renderView(produkList) {
+            produkContainer.innerHTML = "";
+
+            if (produkList.length === 0) {
+                produkContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
+                return;
+            }
+
+            produkList.forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "bg-white rounded-lg shadow-md overflow-hidden product flex flex-col";
+                card.dataset.name = item.nama.toLowerCase();
+
+                card.innerHTML = `
         <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
         <div class="w-full h-64 overflow-hidden bg-black rounded-t-lg relative">
          <video class="absolute w-full h-full object-cover" autoplay muted playsinline preload="none" poster="/thumbnail/${item.video.replace('.mp4', '.jpg', '.png')}">
@@ -271,20 +304,21 @@
         </div>
       </a>
       `;
-    
-      produkContainer.appendChild(card);
-    });
-  }
 
-  // Fitur pencarian
-  searchInput.addEventListener("input", () => {
-    const keyword = searchInput.value.toLowerCase();
-    const filtered = produk.filter((item) =>
-      item.nama.toLowerCase().includes(keyword)
-    );
-    renderView(filtered);
-  });
-</script>
+                produkContainer.appendChild(card);
+            });
+        }
+
+        // Fitur pencarian
+        searchInput.addEventListener("input", () => {
+            const keyword = searchInput.value.toLowerCase();
+            const filtered = produk.filter((item) =>
+                item.nama.toLowerCase().includes(keyword)
+            );
+            renderView(filtered);
+        });
+    </script>
 
 </body>
+
 </html>
