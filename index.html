@@ -293,6 +293,10 @@
 
         );
 
+        // 🔥 URUTKAN A-Z
+produk.sort((a, b) =>
+    a.nama.toLowerCase().localeCompare(b.nama.toLowerCase())
+);
         // Render semua produk pertama kali
         renderView(produk);
 
