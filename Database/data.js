@@ -23,7 +23,7 @@ function getProduk() {
       {
         nama: "Celana Cargo Baggy Wanita",
         harga: 146850,
-        video: "OUTFIT BAGGY.mp4",
+        video: "harajuku.jpg",
         link: "https://s.shopee.co.id/9zmy31XSGD",
         dihapus: false
       },
