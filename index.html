@@ -272,28 +272,28 @@
             {
                 nama: "Jersey Running Bolt",
                 harga: 230000,
-                video: "running bolt.mp4",
+                video: "running bolt.jpg",
                 link: "https://s.shopee.co.id/1qWfhEs8Fy",
                 dihapus: false
             },
             {
                 nama: "Jacket Running Thompson Grey",
                 harga: 274000,
-                video: "thompson black.mp4",
+                video: "thompson black.jpg",
                 link: "https://s.shopee.co.id/5VQ5w3iqxR",
                 dihapus: false
             },
             {
                 nama: "Jacket Running Thompson Black",
                 harga: 274000,
-                video: "thompson.mp4",
+                video: "thompson.jpg",
                 link: "https://s.shopee.co.id/1LaX3HmF9h",
                 dihapus: false
             },
             {
                 nama: "jersey Running Tyson",
                 harga: 175000,
-                video: "tyson.mp4",
+                video: "tyson.jpg",
                 link: "https://s.shopee.co.id/2LT4Gwl7Pu",
                 dihapus: false
             },
@@ -323,12 +323,12 @@
                 card.innerHTML = `
          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
   <div class="w-full aspect-[4/5] overflow-hidden bg-black rounded-t-lg relative">
-    <video class="absolute w-full h-full object-cover"
-      autoplay muted playsinline preload="none"
-      poster="/thumbnail/${item.video.replace('.mp4', '.jpg')}">
-      <source src="video/${item.video}" type="video/mp4">
-      Browser tidak mendukung video.
-    </video>
+    <img 
+      src="video/${item.video}" 
+      alt="${item.nama}"
+      class="absolute w-full h-full object-cover"
+      loading="lazy"
+    >
   </div>
   <div class="p-4">
     <h3 class="text-base font-bold text-gray-800 truncate">${item.nama}</h3>
