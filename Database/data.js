@@ -20,27 +20,8 @@ function getProduk() {
   // Jika kosong, isi dengan data awal
   if (produkList.length === 0) {
     const dataAwal = [
-      {
-        nama: "Celana Cargo Baggy Wanita",
-        harga: 146850,
-        video: "harajuku.jpg",
-        link: "https://s.shopee.co.id/9zmy31XSGD",
-        dihapus: false
-      },
-      {
-        nama: "Workshirt Cutting Boxy Pria",
-        harga: 197500,
-        video: "Workshirt Boxy.mp4",
-        link: "https://s.shopee.co.id/4ApBKfHkUy",
-        dihapus: false
-      },
-      {
-        nama: "Kemeja Fit Body Wanita",
-        harga: 68400,
-        video: "KemejaCeweFitBody.mp4",
-        link: "https://s.shopee.co.id/8ALKJ88hGX",
-        dihapus: false
-      },
+
+      
       
     ];
 
