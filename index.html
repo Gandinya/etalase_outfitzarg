@@ -133,138 +133,127 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
 
     <script>
-        const produkContainer = document.getElementById("produk-container");
-        const searchInput = document.getElementById("searchInput");
+    const produkContainer = document.getElementById("produk-container");
+    const searchInput = document.getElementById("searchInput");
 
-        const produk = getProduk(); // ambil dari data.js
+    // ✅ DATA PRODUK LANGSUNG DI SINI
+    const produk = [
+        {
+            nama: "JERSEY HONGKONG SHUI",
+            harga: 250000,
+            video: "TUDI.jpg",
+            link: "https://s.shopee.co.id/7AZgi91uo6"
+        },
+        {
+            nama: "JERSEY HONGKONG TUDI",
+            harga: 250000,
+            video: "SHUI.jpg",
+            link: "https://s.shopee.co.id/1qYAMJeh6u"
+        },
+        {
+            nama: "POP CULTURE WHITE",
+            harga: 250000,
+            video: "POP WHITE.jpg",
+            link: "https://s.shopee.co.id/8V54Gq3CHG"
+        },
+        {
+            nama: "POP CULTURE BLACK",
+            harga: 250000,
+            video: "POP BLACK.jpg",
+            link: "https://s.shopee.co.id/3fzoVvKY5o"
+        },
+        {
+            nama: "POP CULTURE CREAM",
+            harga: 250000,
+            video: "POP CREAM.jpg",
+            link: "https://s.shopee.co.id/4Aw56nURb3"
+        },
+        {
+            nama: "THE SPESIALIS TERROR",
+            harga: 250000,
+            video: "TERROR BLACK.jpg",
+            link: "https://s.shopee.co.id/802xNKlNCP"
+        },
+        {
+            nama: "Jersey Running Bolt",
+            harga: 230000,
+            video: "running bolt.jpg",
+            link: "https://s.shopee.co.id/1qWfhEs8Fy"
+        },
+        {
+            nama: "Jacket Running Thompson Grey",
+            harga: 274000,
+            video: "thompson black.jpg",
+            link: "https://s.shopee.co.id/5VQ5w3iqxR"
+        },
+        {
+            nama: "Jacket Running Thompson Black",
+            harga: 274000,
+            video: "thompson.jpg",
+            link: "https://s.shopee.co.id/1LaX3HmF9h"
+        },
+        {
+            nama: "Jersey Running Tyson",
+            harga: 175000,
+            video: "tyson.jpg",
+            link: "https://s.shopee.co.id/2LT4Gwl7Pu"
+        }
+    ];
 
-        // ⬇️ Tambahkan data produk baru di sini
-        produk.unshift(
-            {
-                nama: "JERSEY HONGKONG SHUI",
-                harga: 250000,
-                video: "TUDI.jpg",
-                link: "https://s.shopee.co.id/7AZgi91uo6",
-                dihapus: false
-            },
-            {
-                nama: "JERSEY HONGKONG TUDI",
-                harga: 250000,
-                video: "SHUI.jpg",
-                link: "https://s.shopee.co.id/1qYAMJeh6u",
-                dihapus: false
-            },
-            {
-                nama: "POP CULTURE WHITE",
-                harga: 250000,
-                video: "POP WHITE.jpg",
-                link: "https://s.shopee.co.id/8V54Gq3CHG",
-                dihapus: false
-            },
-            {
-                nama: "POP CULTURE BLACK",
-                harga: 250000,
-                video: "POP BLACK.jpg",
-                link: "https://s.shopee.co.id/3fzoVvKY5o",
-                dihapus: false
-            },
-            {
-                nama: "POP CULTURE CREAM",
-                harga: 250000,
-                video: "POP CREAM.jpg",
-                link: "https://s.shopee.co.id/4Aw56nURb3",
-                dihapus: false
-            },
-            {
-                nama: "THE SPESIALIS TERROR",
-                harga: 250000,
-                video: "TERROR BLACK.jpg",
-                link: "https://s.shopee.co.id/802xNKlNCP",
-                dihapus: false
-            },
-            {
-                nama: "Jersey Running Bolt",
-                harga: 230000,
-                video: "running bolt.jpg",
-                link: "https://s.shopee.co.id/1qWfhEs8Fy",
-                dihapus: false
-            },
-            {
-                nama: "Jacket Running Thompson Grey",
-                harga: 274000,
-                video: "thompson black.jpg",
-                link: "https://s.shopee.co.id/5VQ5w3iqxR",
-                dihapus: false
-            },
-            {
-                nama: "Jacket Running Thompson Black",
-                harga: 274000,
-                video: "thompson.jpg",
-                link: "https://s.shopee.co.id/1LaX3HmF9h",
-                dihapus: false
-            },
-            {
-                nama: "jersey Running Tyson",
-                harga: 175000,
-                video: "tyson.jpg",
-                link: "https://s.shopee.co.id/2LT4Gwl7Pu",
-                dihapus: false
-            },
+    // 🔥 URUTKAN A-Z
+    produk.sort((a, b) =>
+        a.nama.toLowerCase().localeCompare(b.nama.toLowerCase())
+    );
 
-        );
+    // 🚀 RENDER AWAL
+    renderView(produk);
 
-        // 🔥 URUTKAN A-Z
-        produk.sort((a, b) =>
-            a.nama.toLowerCase().localeCompare(b.nama.toLowerCase())
-        );
-        // Render semua produk pertama kali
-        renderView(produk);
+    function renderView(produkList) {
+        produkContainer.innerHTML = "";
 
-        function renderView(produkList) {
-            produkContainer.innerHTML = "";
-
-            if (produkList.length === 0) {
-                produkContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
-                return;
-            }
-
-            produkList.forEach((item) => {
-                const card = document.createElement("div");
-                card.className = "bg-white rounded-lg shadow-md overflow-hidden product flex flex-col";
-                card.dataset.name = item.nama.toLowerCase();
-
-                card.innerHTML = `
-         <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
-  <div class="w-full aspect-[4/5] overflow-hidden bg-black rounded-t-lg relative">
-    <img 
-      src="video/${item.video}" 
-      alt="${item.nama}"
-      class="absolute w-full h-full object-cover"
-      loading="lazy"
-    >
-  </div>
-  <div class="p-4">
-    <h3 class="text-base font-bold text-gray-800 truncate">${item.nama}</h3>
-    <p class="text-orange-600 font-semibold mt-2">
-      <i class="fas fa-tag"></i> Rp${item.harga.toLocaleString()}
-    </p>
-  </div>
-</a>
-      `;
-
-                produkContainer.appendChild(card);
-            });
+        if (produkList.length === 0) {
+            produkContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
+            return;
         }
 
-        // Fitur pencarian
-        searchInput.addEventListener("input", () => {
-            const keyword = searchInput.value.toLowerCase();
-            const filtered = produk.filter((item) =>
-                item.nama.toLowerCase().includes(keyword)
-            );
-            renderView(filtered);
+        produkList.forEach((item) => {
+            const card = document.createElement("div");
+            card.className = "bg-white rounded-lg shadow-md overflow-hidden product flex flex-col";
+
+            card.innerHTML = `
+                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="w-full aspect-[4/5] overflow-hidden bg-black rounded-t-lg relative">
+                        <img 
+                            src="video/${item.video}" 
+                            alt="${item.nama}"
+                            class="absolute w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-base font-bold text-gray-800 truncate">${item.nama}</h3>
+                        <p class="text-orange-600 font-semibold mt-2">
+                            <i class="fas fa-tag"></i> Rp${item.harga.toLocaleString()}
+                        </p>
+                    </div>
+                </a>
+            `;
+
+            produkContainer.appendChild(card);
         });
-    </script>
+    }
+
+    // 🔍 SEARCH
+    searchInput.addEventListener("input", () => {
+        const keyword = searchInput.value.toLowerCase();
+
+        const filtered = produk.filter((item) =>
+            item.nama.toLowerCase().includes(keyword)
+        );
+
+        renderView(filtered);
+    });
+</script>
 
 </body>
 
