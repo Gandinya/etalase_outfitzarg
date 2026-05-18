@@ -5,262 +5,367 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etalase OutfitZarg</title>
+
     <link rel="icon" href="/logo/OutfitZarg.png" type="image/x-icon" />
+
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Bebas Neue -->
+    <!-- FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
-
-    <!-- Pirata One -->
     <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
 
     <style>
-        /* H1 default diganti jadi class khusus */
+        body {
+            background: linear-gradient(to bottom right, #000000, #0b1120, #000000);
+            background-attachment: fixed;
+            color: white;
+            overflow-x: hidden;
+        }
+
         .font-bebas {
             font-family: 'Bebas Neue', sans-serif;
         }
 
-        /* Font untuk judul horor */
         .font-creep {
             font-family: 'Pirata One', cursive !important;
             letter-spacing: 2px;
         }
 
-        /* Card lebih gelap */
-        .product-card {
-            background-color: #111;
-            border: 1px solid #222;
-            transition: 0.2s ease-in-out;
+        header {
+            background: rgba(10, 10, 15, 0.75);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+            backdrop-filter: blur(18px);
+            border-radius: 24px;
         }
 
-        .product-card:hover {
-            transform: scale(1.03);
-            border-color: #444;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-        }
-
-        /* Search input */
         #searchInput {
-            background-color: #0f0f0f !important;
-            border: 1px solid #333;
-            color: #fff;
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        #searchInput::placeholder {
+            color: rgba(255,255,255,0.45);
         }
 
         #searchInput:focus {
-            border-color: #00aaff;
-            box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+            border-color: #00d9ff;
+            box-shadow: 0 0 20px rgba(0,217,255,0.35);
+            transform: scale(1.01);
+        }
+
+        .product-card {
+            background: linear-gradient(
+                180deg,
+                rgba(255,255,255,0.08),
+                rgba(255,255,255,0.03)
+            );
+
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            transition: all 0.35s ease;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+
+            border-color: rgba(0,217,255,0.5);
+
+            box-shadow:
+                0 20px 40px rgba(0,0,0,0.45),
+                0 0 25px rgba(0,217,255,0.2);
+        }
+
+        .product-image {
+            transition: 0.4s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.06);
+        }
+
+        .product-title {
+            color: white;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .product-price {
+            color: #ff9d00;
+            font-weight: 700;
+        }
+
+        footer {
+            background: linear-gradient(to top, #050505, #0b1120);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px rgba(0,217,255,0.4);
         }
     </style>
+</head>
 
-<body class="bg-black min-h-screen p-6">
+<body class="min-h-screen p-6">
+
+    <!-- BACKGROUND GLOW -->
+    <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute w-[500px] h-[500px] bg-cyan-500/10 blur-[140px] rounded-full top-[-100px] left-[-100px]"></div>
+
+        <div class="absolute w-[400px] h-[400px] bg-orange-500/10 blur-[120px] rounded-full bottom-[-100px] right-[-100px]"></div>
+    </div>
+
     <div class="max-w-7xl mx-auto">
 
-        <header class="sticky rounded-50 top-0 bg-black bg-opacity-80 backdrop-blur-md z-50 border-b border-gray-800 px-6 py-4">
-            <h1 class="text-4xl text-white font-creep font-bold mb-6 text-center drop-shadow-lg">
+        <header class="sticky top-0 bg-opacity-80 z-50 border border-gray-800 px-6 py-4 mb-6">
+
+            <h1 class="text-5xl text-center font-creep glow-text mb-5">
+                OutfitZarg
             </h1>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-5">
                 <div>
                     <img src="/video/Untitled-1.png" alt="Gambar Kiri">
                 </div>
+
                 <div>
                     <img class="h-[55px] p-[5px]" src="/video/gandul.png" alt="Gambar Kanan">
                 </div>
             </div>
 
-            <input type="text" id="searchInput" placeholder="Cari produk sesuai caption..."
-                class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:border-blue-400" />
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari produk sesuai caption..."
+                class="w-full p-4 rounded-xl focus:outline-none"
+            />
         </header>
 
-        <div id="produk-container" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-4">
+        <div id="produk-container"
+            class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-4">
         </div>
 
     </div>
 
-    <footer class="bg-gray-950 text-white mt-10 w-full border-t border-gray-800">
+    <footer class="text-white mt-12 w-full border-t border-gray-800 rounded-t-[30px]">
+
         <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-            <!-- Logo -->
             <div>
-                <h2 class="text-2xl font-bold mb-4">OutfitZarg</h2>
-                <p class="text-gray-400 text-sm">
-                    Etalase fashion terbaik untuk gaya harian kamu. Kualitas premium, harga bersahabat.
+                <h2 class="text-3xl font-bold mb-4 glow-text">
+                    OutfitZarg
+                </h2>
+
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Etalase fashion terbaik untuk gaya harian kamu.
+                    Kualitas premium, harga bersahabat.
                 </p>
             </div>
 
-            <!-- Navigasi -->
             <div>
-                <h3 class="text-lg font-semibold mb-4 text-white">TIPE PRODUK</h3>
+                <h3 class="text-lg font-semibold mb-4 text-white">
+                    TIPE PRODUK
+                </h3>
+
                 <ul class="space-y-2 text-gray-400">
-                    <li class="hover:text-white transition">CELANA</li>
-                    <li class="hover:text-white transition">KAOS</li>
-                    <li class="hover:text-white transition">KEMEJA</li>
-                    <li class="hover:text-white transition">OUTFIT KECE</li>
+                    <li class="hover:text-cyan-400 transition">CELANA</li>
+                    <li class="hover:text-cyan-400 transition">KAOS</li>
+                    <li class="hover:text-cyan-400 transition">KEMEJA</li>
+                    <li class="hover:text-cyan-400 transition">OUTFIT KECE</li>
                 </ul>
             </div>
 
-            <!-- Bantuan -->
             <div>
-                <h3 class="text-lg font-semibold mb-4 text-white">LANGSUNG AJA KLIK LINKNYA</h3>
+                <h3 class="text-lg font-semibold mb-4 text-white">
+                    LANGSUNG AJA KLIK LINKNYA
+                </h3>
+
                 <ul class="space-y-2 text-gray-400">
-                    <li class="hover:text-white transition">LINK LANGSUNG KE SHOPEE</li>
-                    <li class="hover:text-white transition">ALL PRODUK DISCOUNT</li>
-                    <li class="hover:text-white transition">KUALITAS DUNIA, HARGA TERJANGKAU</li>
-                    <li class="hover:text-white transition">#AZEKAPUIRE</li>
+                    <li class="hover:text-orange-400 transition">LINK LANGSUNG KE SHOPEE</li>
+                    <li class="hover:text-orange-400 transition">ALL PRODUK DISCOUNT</li>
+                    <li class="hover:text-orange-400 transition">KUALITAS DUNIA, HARGA TERJANGKAU</li>
+                    <li class="hover:text-orange-400 transition">#AZEKAPUIRE</li>
                 </ul>
             </div>
 
-            <!-- Sosmed -->
             <div>
-                <h3 class="text-lg font-semibold mb-4 text-white">Ikuti Kami</h3>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/outfitzarg/" class="text-gray-400 hover:text-white transition"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                <h3 class="text-lg font-semibold mb-4 text-white">
+                    Ikuti Kami
+                </h3>
+
+                <div class="flex space-x-4 text-2xl">
+                    <a href="https://www.instagram.com/outfitzarg/"
+                        class="text-gray-400 hover:text-pink-400 transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
+
         </div>
 
         <div class="border-t border-gray-800 py-4 text-center text-gray-500 text-sm">
             &copy; 2025 Mamang Ganuy. All rights reserved.
         </div>
+
     </footer>
 
-    <!-- Font Awesome CDN untuk icon -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>    <script src="/Database/data.js"
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
+    <!-- ICON -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <script>
-    const produkContainer = document.getElementById("produk-container");
-    const searchInput = document.getElementById("searchInput");
 
-    // ✅ DATA PRODUK LANGSUNG DI SINI
-    const produk = [
-        {
-            nama: "CUSTOM KAOS REGULER",
-            harga: 55000,
-            video: "CUSTOM1.jpg",
-            link: "https://wa.link/zvx6xb"
-        },
-        {
-            nama: "JERSEY HONGKONG SHUI",
-            harga: 250000,
-            video: "TUDI.jpg",
-            link: "https://s.shopee.co.id/7AZgi91uo6"
-        },
-        {
-            nama: "JERSEY HONGKONG TUDI",
-            harga: 250000,
-            video: "SHUI.jpg",
-            link: "https://s.shopee.co.id/1qYAMJeh6u"
-        },
-        {
-            nama: "POP CULTURE WHITE",
-            harga: 250000,
-            video: "POP WHITE.jpg",
-            link: "https://s.shopee.co.id/8V54Gq3CHG"
-        },
-        {
-            nama: "POP CULTURE BLACK",
-            harga: 250000,
-            video: "POP BLACK.jpg",
-            link: "https://s.shopee.co.id/3fzoVvKY5o"
-        },
-        {
-            nama: "POP CULTURE CREAM",
-            harga: 250000,
-            video: "POP CREAM.jpg",
-            link: "https://s.shopee.co.id/4Aw56nURb3"
-        },
-        {
-            nama: "THE SPESIALIS TERROR",
-            harga: 250000,
-            video: "TERROR BLACK.jpg",
-            link: "https://s.shopee.co.id/802xNKlNCP"
-        },
-        {
-            nama: "Jersey Running Bolt",
-            harga: 230000,
-            video: "running bolt.jpg",
-            link: "https://s.shopee.co.id/1qWfhEs8Fy"
-        },
-        {
-            nama: "Jacket Running Thompson Grey",
-            harga: 274000,
-            video: "thompson black.jpg",
-            link: "https://s.shopee.co.id/5VQ5w3iqxR"
-        },
-        {
-            nama: "Jacket Running Thompson Black",
-            harga: 274000,
-            video: "thompson.jpg",
-            link: "https://s.shopee.co.id/1LaX3HmF9h"
-        },
-        {
-            nama: "Jersey Running Tyson",
-            harga: 175000,
-            video: "tyson.jpg",
-            link: "https://s.shopee.co.id/2LT4Gwl7Pu"
-        }
-    ];
+        const produkContainer = document.getElementById("produk-container");
+        const searchInput = document.getElementById("searchInput");
 
-    // 🔥 URUTKAN A-Z
-    produk.sort((a, b) =>
-        a.nama.toLowerCase().localeCompare(b.nama.toLowerCase())
-    );
+        const produk = [
+            {
+                nama: "CUSTOM KAOS REGULER",
+                harga: 55000,
+                video: "CUSTOM1.jpg",
+                link: "https://wa.link/zvx6xb"
+            },
+            {
+                nama: "JERSEY HONGKONG SHUI",
+                harga: 250000,
+                video: "TUDI.jpg",
+                link: "https://s.shopee.co.id/7AZgi91uo6"
+            },
+            {
+                nama: "JERSEY HONGKONG TUDI",
+                harga: 250000,
+                video: "SHUI.jpg",
+                link: "https://s.shopee.co.id/1qYAMJeh6u"
+            },
+            {
+                nama: "POP CULTURE WHITE",
+                harga: 250000,
+                video: "POP WHITE.jpg",
+                link: "https://s.shopee.co.id/8V54Gq3CHG"
+            },
+            {
+                nama: "POP CULTURE BLACK",
+                harga: 250000,
+                video: "POP BLACK.jpg",
+                link: "https://s.shopee.co.id/3fzoVvKY5o"
+            },
+            {
+                nama: "POP CULTURE CREAM",
+                harga: 250000,
+                video: "POP CREAM.jpg",
+                link: "https://s.shopee.co.id/4Aw56nURb3"
+            },
+            {
+                nama: "THE SPESIALIS TERROR",
+                harga: 250000,
+                video: "TERROR BLACK.jpg",
+                link: "https://s.shopee.co.id/802xNKlNCP"
+            },
+            {
+                nama: "Jersey Running Bolt",
+                harga: 230000,
+                video: "running bolt.jpg",
+                link: "https://s.shopee.co.id/1qWfhEs8Fy"
+            },
+            {
+                nama: "Jacket Running Thompson Grey",
+                harga: 274000,
+                video: "thompson black.jpg",
+                link: "https://s.shopee.co.id/5VQ5w3iqxR"
+            },
+            {
+                nama: "Jacket Running Thompson Black",
+                harga: 274000,
+                video: "thompson.jpg",
+                link: "https://s.shopee.co.id/1LaX3HmF9h"
+            },
+            {
+                nama: "Jersey Running Tyson",
+                harga: 175000,
+                video: "tyson.jpg",
+                link: "https://s.shopee.co.id/2LT4Gwl7Pu"
+            }
+        ];
 
-    // 🚀 RENDER AWAL
-    renderView(produk);
-
-    function renderView(produkList) {
-        produkContainer.innerHTML = "";
-
-        if (produkList.length === 0) {
-            produkContainer.innerHTML = `<p class="text-gray-600">Tidak ada produk ditemukan.</p>`;
-            return;
-        }
-
-        produkList.forEach((item) => {
-            const card = document.createElement("div");
-            card.className = "bg-white rounded-lg shadow-md overflow-hidden product flex flex-col";
-
-            card.innerHTML = `
-                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
-                    <div class="w-full aspect-[4/5] overflow-hidden bg-black rounded-t-lg relative">
-                        <img 
-                            src="video/${item.video}" 
-                            alt="${item.nama}"
-                            class="absolute w-full h-full object-cover"
-                            loading="lazy"
-                        >
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-base font-bold text-gray-800 truncate">${item.nama}</h3>
-                        <p class="text-orange-600 font-semibold mt-2">
-                            <i class="fas fa-tag"></i> Rp${item.harga.toLocaleString()}
-                        </p>
-                    </div>
-                </a>
-            `;
-
-            produkContainer.appendChild(card);
-        });
-    }
-
-    // 🔍 SEARCH
-    searchInput.addEventListener("input", () => {
-        const keyword = searchInput.value.toLowerCase();
-
-        const filtered = produk.filter((item) =>
-            item.nama.toLowerCase().includes(keyword)
+        produk.sort((a, b) =>
+            a.nama.toLowerCase().localeCompare(b.nama.toLowerCase())
         );
 
-        renderView(filtered);
-    });
-</script>
+        renderView(produk);
+
+        function renderView(produkList) {
+            produkContainer.innerHTML = "";
+
+            if (produkList.length === 0) {
+                produkContainer.innerHTML = `
+                    <p class="text-gray-500">
+                        Tidak ada produk ditemukan.
+                    </p>
+                `;
+                return;
+            }
+
+            produkList.forEach((item) => {
+
+                const card = document.createElement("div");
+                card.className = "product-card product flex flex-col";
+
+                card.innerHTML = `
+
+                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
+
+                        <div class="w-full aspect-[4/5] overflow-hidden bg-black relative">
+
+                            <img
+                                src="video/${item.video}"
+                                alt="${item.nama}"
+                                class="product-image absolute w-full h-full object-cover"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <div class="p-4">
+
+                            <h3 class="product-title text-base truncate">
+                                ${item.nama}
+                            </h3>
+
+                            <p class="product-price mt-2 text-lg">
+                                <i class="fas fa-tag"></i>
+                                Rp${item.harga.toLocaleString()}
+                            </p>
+
+                        </div>
+
+                    </a>
+                `;
+
+                produkContainer.appendChild(card);
+            });
+        }
+
+        searchInput.addEventListener("input", () => {
+
+            const keyword = searchInput.value.toLowerCase();
+
+            const filtered = produk.filter((item) =>
+                item.nama.toLowerCase().includes(keyword)
+            );
+
+            renderView(filtered);
+        });
+
+    </script>
 
 </body>
-
 </html>
+```
